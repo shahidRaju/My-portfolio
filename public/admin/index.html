@@ -4,11 +4,14 @@
     <meta charset="utf-8" />
     <title>Content Manager</title>
 
+    <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/decap-cms@3.2.2/dist/decap-cms.js"></script>
+
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
 
     <style>
-      html, body {
+      html, body, #cms {
         height: 100%;
         margin: 0;
       }
@@ -20,21 +23,22 @@
 
     <script>
       window.addEventListener("load", function () {
-        if (!window.CMS && !window.DecapCMS) {
-          document.body.innerHTML = "<h2 style='padding:2rem'>❌ Failed to load Decap CMS</h2>";
-          console.error("Decap CMS failed to load");
-          return;
-        }
-
-        const CMS = window.DecapCMS || window.CMS;
 
         if (window.netlifyIdentity) {
           window.netlifyIdentity.on("init", function (user) {
-            if (!user) window.netlifyIdentity.open();
+            if (!user) {
+              window.netlifyIdentity.open();
+            }
           });
         }
 
-        CMS.init({ root: "#cms" });
+        if (window.CMS) {
+          window.CMS.init({ root: "#cms" });
+        } else {
+          document.body.innerHTML = "<h2 style='padding:2rem;color:red'>Failed to load Decap CMS</h2>";
+          console.error("Decap CMS not found");
+        }
+
       });
     </script>
   </body>
