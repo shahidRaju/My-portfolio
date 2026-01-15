@@ -12,6 +12,7 @@ export default function Header() {
                 <NavLink to="/about" className={({isActive}) => isActive ? 'active' : ''}>About</NavLink>
                 <NavLink to="/our-story" className={({isActive}) => isActive ? 'active' : ''}>Our Story</NavLink>
                 <NavLink to="/blog" className={({ isActive }) => isActive ? 'active' : ''}>Blog</NavLink>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
             </nav>
         </div>
         <div className="header__icons">
