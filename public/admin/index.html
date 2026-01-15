@@ -9,9 +9,19 @@
 
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
+
+    <style>
+      html, body, #cms {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
   </head>
 
   <body>
+    <!-- 👇 CMS mounts here -->
+    <div id="cms"></div>
+
     <script>
       window.addEventListener("DOMContentLoaded", function () {
         if (window.netlifyIdentity) {
@@ -23,9 +33,9 @@
         }
 
         if (window.DecapCMS) {
-          window.DecapCMS.init();
+          window.DecapCMS.init({ root: "#cms" });
         } else if (window.CMS) {
-          window.CMS.init();
+          window.CMS.init({ root: "#cms" });
         }
       });
     </script>
