@@ -9,9 +9,8 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - label: "Home Page"
+      - label: "Home"
         name: "home"
         file: "src/content/home.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Button Text", name: "buttonText", widget: "string" }
